@@ -1,12 +1,11 @@
 import requests
 from django.conf import settings
 from django.utils.timezone import localtime
-
 from rest_framework import status
 
 
 def send_telegram(habit):
-    """Отправляет сообщение через телеграм с напоинанием о привычке"""
+    """Отправляет сообщение через телеграм с напоминанием о активности"""
     local_habit_time = localtime(habit.time)
     formatted_time = local_habit_time.strftime("%H:%M")
 
@@ -19,4 +18,3 @@ def send_telegram(habit):
     )
     if response.status_code != status.HTTP_200_OK:
         print(f"Ошибка при отправке сообщения в Telegram: {response.text}")
-

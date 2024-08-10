@@ -78,4 +78,3 @@ class RegularityValidator:
 
         if frequency_in_days > 7:
             raise ValidationError("Нельзя выполнять привычку реже, чем 1 раз в 7 дней")
-

@@ -12,12 +12,12 @@ class HabitTestCase(APITestCase):
         self.habit = Habit.objects.create(
             place="парк",
             time="2024-08-24T08:00:00",
-            action="приседания",
+            action="пробежка",
             is_pleasant=False,
             frequency_number=1,
             frequency_unit="days",
-            reward="съесть яблоко",
-            duration="120",
+            reward="съешь пирожок",
+            duration="60",
             is_public=True,
             user=self.user,
         )
@@ -35,11 +35,11 @@ class HabitTestCase(APITestCase):
         data = {
             "place": "дом",
             "time": "2024-07-24T20:40:00",
-            "action": "протереть пыль",
+            "action": "помыть посуду",
             "is_pleasant": False,
             "frequency_number": 1,
             "frequency_unit": "days",
-            "reward": "посмотреть фильм",
+            "reward": "съешь конфетку",
             "duration": "00:02:00",
             "is_public": True,
             "user": 1,
@@ -72,4 +72,3 @@ class HabitTestCase(APITestCase):
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Habit.objects.all().count(), 0)
-

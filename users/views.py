@@ -12,6 +12,5 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         new_user = serializer.save(is_active=True)
-        new_user.set_password(self.request.data['password'])
+        new_user.set_password(self.request.data["password"])
         new_user.save()
-

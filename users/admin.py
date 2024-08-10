@@ -2,7 +2,6 @@ from django.contrib import admin
 
 from users.models import User
 
-
 # Необходимо зарегистрировать User, иначе не будет видно в Admin
 
 admin.site.register(User)
@@ -11,4 +10,3 @@ admin.site.register(User)
 # @admin.register(User)
 # class UserAdmin(admin.ModelAdmin):
 #     list_filter = ("id", "email")
-

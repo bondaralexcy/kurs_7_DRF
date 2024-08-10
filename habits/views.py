@@ -1,11 +1,10 @@
 from django.shortcuts import render
-
-# Create your views here.
-from rest_framework import viewsets, generics
-from rest_framework.filters import SearchFilter, OrderingFilter
-from rest_framework.permissions import IsAuthenticated
 from django.utils.decorators import method_decorator
 from drf_yasg.utils import swagger_auto_schema
+# Create your views here.
+from rest_framework import generics, viewsets
+from rest_framework.filters import OrderingFilter, SearchFilter
+from rest_framework.permissions import IsAuthenticated
 
 from habits.models import Habit
 from habits.paginations import HabitPaginator
@@ -37,4 +36,3 @@ class PublicHabitListAPIView(generics.ListAPIView):
     serializer_class = HabitSerializer
     queryset = Habit.objects.filter(is_public=True)
     pagination_class = HabitPaginator
-

@@ -6,7 +6,7 @@ from habits.services import send_telegram
 
 
 @shared_task()
-def habit():
+def find_habits():
 
     now = timezone.now()
     print(f"Текущее время: {now}")
@@ -14,11 +14,16 @@ def habit():
     habits = Habit.objects.filter(
         time__lte=now, time__gt=now - timezone.timedelta(minutes=1)
     )
+    # habits = Habit.objects.all()
 
     print(f"Найдено привычек: {habits.count()}")
 
     for habit_item in habits:
         if habit_item.user.tg_chat_id:
+            # tg_chat_id = 1069037972
+            print(
+                f"Отправляем сообщение пользователю по его tg_chat_id = {habit_item.user.tg_chat_id}"
+            )
             send_telegram(habit_item)
             if habit_item.frequency_unit == "days":
                 habit_item.time = habit_item.time + timezone.timedelta(
@@ -35,4 +40,3 @@ def habit():
             habit_item.save()
         else:
             print(f"У пользователя {habit_item.user} не указан тг")
-
