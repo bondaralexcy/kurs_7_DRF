@@ -53,19 +53,13 @@
   __Celery__.
 
 **Для работы с проектом необходимо.**  
-- Клонировать репозиторий на компьютер используя SSH ключ.
+- Клонировать репозиторий на компьютер из репозитория https://github.com/bondaralexcy/kurs_7_DRF.git
 -
-- В файл .env внесите свои данные (необходимые переменные перечислены в файле .env.sample)
+- В файл .env внесите свои данные 
+- (необходимые переменные перечислены в файле .env.sample)
 -
-- В терминале создайте сеть с названием "habits" командой:
-docker network create habits
-- 
-- создайте контейнер postgres:latest 
-- (значения для --name, POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD должны совпадать с указанными в файле .env)
-docker run -d --network=habits --name=db -p 5432:5432 -e POSTGRES_DB=habits -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=mysecretpassword postgres:latest
-- 
-- создайте и запустите контейнер приложения командой:
+- Создайте и запустите контейнер приложения командой:
 docker-compose up -d --build
 
-- в программе Postman зарегистрируйтесь и создайте привычки
-- зайдите в телеграм бот и нажмите START
+- В программе Postman зарегистрируйтесь и создайте привычки
+- зайдите в телеграм-бот и нажмите START
